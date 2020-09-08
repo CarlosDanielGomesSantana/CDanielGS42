@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Animated Skills Bars</title>
+</head>
+
+<body>
+    <div class="skills">
+        <div class="skill">
+            <div class="skillName">HTML</div>
+            <div class="skillBar">
+                <div class="skillPer" per="81"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <div class="skillName">CSS</div>
+            <div class="skillBar">
+                <div class="skillPer" per="67"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <div class="skillName">Javascript</div>
+            <div class="skillBar">
+                <div class="skillPer" per="79"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('.skillPer').each(function() {
+            var $this = $(this);
+            var per = $this.attr('per');
+            $this.css("width", per + "%");
+            $({
+                animatedValue: 0
+            }).animate({
+                animatedValue: per
+            }, {
+                duration: 1000,
+                step: function() {
+                    $this.attr("per", Math.floor(this.animatedValue) + "%");
+                },
+                complete: function() {
+                    $this.attr("per", Math.floor(this.animatedValue) + "%");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
